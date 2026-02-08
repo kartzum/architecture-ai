@@ -11,7 +11,9 @@ embeddings = HuggingFaceEmbeddings(
 
 vectorstore = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
 
-query = "What is the main topic?"
+print("")
+query = "Who is Xeen Cloudrunner?"
+print(query)
 docs = vectorstore.similarity_search(query, k=3)
 print(f"Found {len(docs)} relevant documents")
 for i, doc in enumerate(docs):

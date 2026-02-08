@@ -2,6 +2,8 @@
 
 ### Источник
 
+Для базы знаний были использованы следующие ресурсы:
+
 * https://starwars.fandom.com/wiki/Anakin_Skywalker
 * https://starwars.fandom.com/wiki/Chewbacca
 * https://starwars.fandom.com/wiki/Darth_Sidious
@@ -14,3 +16,10 @@
 * https://starwars.fandom.com/wiki/C-3PO
 * https://starwars.fandom.com/wiki/Millennium_Falcon
 * https://starwars.fandom.com/wiki/Luke_Skywalker
+
+Ресурсы были сохранены в текстовом формате в knowledge_base/original.
+
+### Обработка данных для базы знаний
+
+С помощью replace_all.py в данных производится замена слов на основе terms_map.json.
+Результаты сохранены в knowledge_base/processed.

@@ -1,5 +1,9 @@
 # architecture-ai
 
+## Исследование моделей и инфраструктуры
+
+[README.md](Task1/README.md)
+
 ## Подготовка базы знаний
 
 [README.md](Task2/README.md)

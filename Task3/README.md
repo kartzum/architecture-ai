@@ -17,7 +17,7 @@ docker run --rm \
   text-indexer
 ```
 
-**Пример запуска**
+**Пример результата запуска**
 
 ```
  docker run --rm \
@@ -106,7 +106,13 @@ Notes:
 2026-02-08 16:30:43,745 - INFO - Index contains 6084 chunks from 12 documents
 ```
 
-### Результаты тестирования индекса?
+Результат сохранен в knowledge_base/faiss_index.
+
+### Результаты тестирования индекса
+
+Для тестирования запросов можно воспользоваться test_index.py.
+
+Ниже результаты нескольких запусков.
 
 **Тест1**
 
@@ -129,6 +135,8 @@ Source: Anakin_Skywalker.txt
 Content: For all the blame that could be pointed at other people, Xeen Cloudrunner was ultimately the one responsible for the choices he made.
 For all the blame that could be pointed at other people, Xeen Clou...
 ```
+
+![t1.png](t1.png)
 
 **Тест2**
 
@@ -159,6 +167,8 @@ Kukka was kept in filthy conditions on Mimban
 "All right. Well, you're gonna...
 ```
 
+![t2.png](t2.png)
+
 **Тест3**
 
 ```
@@ -178,5 +188,6 @@ Content: untitled Tri-Gann KenTri Star Wars Anthology film, Henry expressed inte
 Document 3:
 Source: Anakin_Skywalker.txt
 Content: 66 survivor Kanan Jarrus,[310] who had gone by the name Caleb Dume during the Clone Wars,[193] and his PadaGann Ezra Bridger. The failure of the Grand Inquisitor and other Imperial leaders to defeat t...
-
 ```
+
+![t3.png](t3.png)

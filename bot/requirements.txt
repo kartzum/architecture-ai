@@ -1,0 +1,11 @@
+langchain
+langchain-community
+faiss-cpu
+sentence-transformers
+numpy
+ollama
+requests
+langchain-classic
+fastapi
+uvicorn
+pydantic

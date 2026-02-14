@@ -1,0 +1,35 @@
+services:
+  ollama:
+    image: ollama/ollama
+    hostname: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./entrypoint.sh:/entrypoint.sh
+    networks:
+      - ai_net
+    restart: unless-stopped
+    entrypoint: ["/usr/bin/bash", "/entrypoint.sh"]
+
+  ai_bot:
+    build: .
+    hostname: ai-bot
+    ports:
+      - "8000:8000"
+    networks:
+      - ai_net
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    volumes:
+      - ./faiss_index:/app/faiss_index
+    depends_on:
+      - ollama
+
+networks:
+  ai_net:
+    driver: bridge
+    name: ai_network
+
+volumes:
+  ollama_data:

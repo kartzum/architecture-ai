@@ -81,7 +81,6 @@ class OllamaBot(AbstractBot):
         template = """You are a helpful and honest assistant.
         You must answer the user's question *only* based on the provided context.
         If the answer is not found in the context, you must reply with the exact phrase: 'I do not know'.
-        Do not use any prior knowledge or make up information. Acknowledge your instructions."
         {context}
         Question: {question}
         Answer:"""
@@ -104,8 +103,8 @@ class OllamaBot(AbstractBot):
         docs = []
         if result["source_documents"]:
             for doc in result["source_documents"]:
-                source = str(doc.metadata.get("source", "unknown"))
                 page_content = str(doc.page_content)
+                source = str(doc.metadata.get("source", "unknown"))
                 docs.append({"source": source, "page_content": page_content})
 
         r = result["result"]
@@ -148,8 +147,12 @@ class OllamaBot(AbstractBot):
         docs = []
         if result["source_documents"]:
             for doc in result["source_documents"]:
-                source = str(doc.metadata.get("source", "unknown"))
                 page_content = str(doc.page_content)
+                source = str(doc.metadata.get("source", "unknown"))
+                page_content_lower = page_content.lower()
+                if any(phrase in page_content_lower for phrase in blacklisted_phrases):
+                    logger.info(f"Skip={source}")
+                    continue
                 docs.append({"source": source, "page_content": page_content})
 
         r = result["result"]

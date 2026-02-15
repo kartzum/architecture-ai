@@ -1,0 +1,22 @@
+{
+  "num_documents": 13,
+  "num_chunks": 6085,
+  "chunk_size": 1000,
+  "chunk_overlap": 200,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "files_indexed": [
+    "C-3PO.txt",
+    "Leia_Skywalker_Organa_Solo.txt",
+    "Wilhuff_Tarkin.txt",
+    "Millennium_Falcon.txt",
+    "Han_Solo.txt",
+    "bum.txt",
+    "Chewbacca.txt",
+    "Yoda.txt",
+    "Luke_Skywalker.txt",
+    "Obi-Wan_Kenobi.txt",
+    "R2-D2.txt",
+    "Anakin_Skywalker.txt",
+    "Darth_Sidious.txt"
+  ]
+}

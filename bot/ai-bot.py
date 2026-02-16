@@ -31,15 +31,21 @@ class OllamaBot(AbstractBot):
     def __init__(self, url="http://ollama:11434", use_index=True, index_folder="faiss_index"):
         super().__init__()
 
+        # Создание БД из файлов или в памяти.
+
         if use_index:
             self.store = self._crate_faiss_index_store(index_folder)
         else:
             self.store = self._crate_local_store()
 
+        # Создание llm.
+
         self.llm = Ollama(
             model="deepseek-r1:1.5b",
             base_url=url
         )
+
+        # Создание цепочки для запросов с промтом.
 
         self.qa_chain = self._create_qa_chain(self.llm, self.store)
 
@@ -96,6 +102,8 @@ class OllamaBot(AbstractBot):
         )
 
     def query_light(self, q):
+        # Запрос без проверок.
+
         result = self.qa_chain.invoke({"query": q})
 
         logger.info(f"Result={result}")
@@ -116,6 +124,8 @@ class OllamaBot(AbstractBot):
         return query_result
 
     def query_full(self, q):
+        # Запрос с проверками.
+
         if q is None:
             return {"result": "The question cannot be empty"}
 
@@ -198,6 +208,8 @@ class Query(BaseModel):
     query: str
 
 
+# Создание бота согласно входным параметрам.
+
 logger.info("App start")
 
 bot = EchoBot()
@@ -215,6 +227,7 @@ app = FastAPI()
 
 @app.post("/query-light")
 async def query_light(q: Query, response_model=dict):
+    # Запросы без проверок.
     logger.info(f"Query={q}")
     q = q.query
     result = bot.query_light(q)
@@ -224,6 +237,7 @@ async def query_light(q: Query, response_model=dict):
 
 @app.post("/query-full")
 async def query_full(q: Query, response_model=dict):
+    # Запросы с проверками.
     logger.info(f"Query={q}")
     q = q.query
     result = bot.query_full(q)
@@ -232,6 +246,8 @@ async def query_full(q: Query, response_model=dict):
 
 
 def main():
+    # Запуск сервиса.
+
     import uvicorn
 
     uvicorn.run(app, host="0.0.0.0", port=8000)

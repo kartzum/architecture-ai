@@ -21,5 +21,5 @@
 
 ### Обработка данных для базы знаний
 
-С помощью replace_all.py в данных производится замена слов на основе terms_map.json.
+С помощью knowledge_base/replace_all.py в данных производится замена слов на основе terms_map.json.
 Результаты сохранены в knowledge_base/processed.
